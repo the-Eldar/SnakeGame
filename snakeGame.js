@@ -3,10 +3,9 @@ const canvas = document.querySelector(".cnvs"),
   foodSnake = new Image();
 foodSnake.src = "food.png";
 
-let box = 24;
-
-let score = 0;
-let count = document.querySelector(".count");
+let box = 24,
+  outScore = document.querySelector(".count"),
+  score = 0;
 
 let food = {
   x: Math.floor(Math.random() * 17) * box,
@@ -52,6 +51,7 @@ function draw() {
 
   if (snakeX == food.x && snakeY == food.y) {
     score++;
+    outScore.innerHTML = "Счет:" + score;
     food = {
       x: Math.floor(Math.random() * 25) * box,
       y: Math.floor(Math.random() * 25) * box,
@@ -81,4 +81,3 @@ function draw() {
   snake.unshift(newHead);
 }
 let game = setInterval(draw, 100);
-console.log(score);

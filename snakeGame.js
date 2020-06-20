@@ -1,6 +1,8 @@
 const canvas = document.querySelector(".cnvs"),
   ctx = canvas.getContext("2d"),
   foodSnake = new Image();
+ground = new Image();
+ground.src = "groud.jpg";
 foodSnake.src = "food.png";
 
 let box = 24,
@@ -15,8 +17,8 @@ let food = {
 let snake = [];
 
 snake[0] = {
-  x: 17 * box,
-  y: 15 * box,
+  x: 12 * box,
+  y: 13 * box,
 };
 
 document.addEventListener("keydown", direction);
@@ -36,8 +38,8 @@ function direction(event) {
 }
 
 function draw() {
+  ctx.drawImage(ground, 0, 0);
   ctx.drawImage(foodSnake, food.x, food.y);
-
   for (let i = 0; i < snake.length; i++) {
     if (i == 0) {
       ctx.fillStyle = " black";
@@ -77,7 +79,7 @@ function draw() {
     x: snakeX,
     y: snakeY,
   };
-
   snake.unshift(newHead);
 }
+
 let game = setInterval(draw, 100);
